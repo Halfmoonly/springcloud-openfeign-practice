@@ -4,34 +4,6 @@
 - spring.cloud.alibaba 2022.0.0.0-RC2
 - spring.cloud 2022.0.0
 
-# module:debug_openfeign
-本仓库涵盖以下源码调试:
-- openfeign代理原理
-- openfeign循环依赖事故模拟与解决
-
-```shell
-Description:
-
-The dependencies of some of the beans in the application context form a cycle:
-
-┌─────┐
-|  lyWebMvcConfig (field org.lyflexi.feignclient.feign.client.UserClient org.lyflexi.feignclient.config.LyWebMvcConfig.userClient)
-↑     ↓
-|  org.lyflexi.feignclient.feign.client.UserClient
-↑     ↓
-|  org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration$EnableWebMvcConfiguration
-└─────┘
-
-
-Action:
-
-Relying upon circular references is discouraged and they are prohibited by default. Update your application to remove the dependency cycle between beans. As a last resort, it may be possible to break the cycle automatically by setting spring.main.allow-circular-references to true.
-
-Disconnected from the target VM, address: '127.0.0.1:51151', transport: 'socket'
-
-Process finished with exit code 1
-```
-
 # module:custom-openfeign-biz-framework
 问题：异步场景下如消息消费，由于之前请求上下文的清理，导致消费逻辑中远程调用的请求头丢失，调用远程服务失败
 
@@ -45,4 +17,4 @@ Process finished with exit code 1
 - RequestInterceptor：A在feign拦截器中统一设置请求头或者请求体（POST）
 - HandlerInterceptor：Common在mvc拦截器中解析feign的请求头或者请求体，并根据请求头重新设置上下文信息：如用户信息，租户信息
 - 最后第二次调用远程服务B的其他接口的时候是异步调用，此时异步远程调用服务B才能成功
-![img.png](custom-openfeign-biz-framework/pic/img.png)
+![img.png](pic/img.png)

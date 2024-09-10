@@ -3,11 +3,12 @@ package org.lyflexi.customfeignclient.controller;
 
 import org.lyflexi.customcloudfeignapi.entity.User;
 import org.lyflexi.customcloudfeignapi.result.Result;
+import org.lyflexi.customcloudfeignapi.entity.UserParam;
 import org.lyflexi.customfeignclient.feign.client.UserClient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @Author: lyflexi
@@ -26,5 +27,12 @@ public class UserClientController {
     {
         User user = userClient.getUserById(id);
         return new Result<>(user);
+    }
+
+    @PostMapping(value = "/consumer/feign/user/search")
+    public Result<List<User>> search(@RequestBody UserParam param)
+    {
+        List<User> users = userClient.search(param);
+        return new Result<>(users);
     }
 }

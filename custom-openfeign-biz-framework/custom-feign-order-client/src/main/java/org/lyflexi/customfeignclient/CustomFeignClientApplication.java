@@ -10,6 +10,9 @@ import org.springframework.context.annotation.FilterType;
 @SpringBootApplication
 @EnableFeignClients
 @EnableDiscoveryClient
+@ComponentScan(
+        value = "org.lyflexi",/*扫自身，加上扫common*/
+        excludeFilters = @ComponentScan.Filter(type = FilterType.REGEX,pattern = "org.lyflexi.customfeignclient.feign.config.*"))
 public class CustomFeignClientApplication {
 
     public static void main(String[] args) {

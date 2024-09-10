@@ -6,8 +6,8 @@ import feign.RequestTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 import org.lyflexi.customcloudfeignapi.constant.LyFlexiConstant;
+import org.lyflexi.customcloudfeignapi.entity.UserParam;
 import org.lyflexi.customcloudfeignapi.holder.ProjectContextHolder;
-import org.lyflexi.customfeignclient.feign.body.CustomFeignBody;
 
 import java.nio.charset.StandardCharsets;
 
@@ -42,7 +42,7 @@ public class UserInterceptor implements RequestInterceptor {
 
     private static @NotNull String builderBody() {
         // 创建并设置请求体对象
-        CustomFeignBody feignBody = new CustomFeignBody();
+        UserParam feignBody = new UserParam();
         feignBody.setField1("value1");
         feignBody.setField2("value2");
         // 将请求体转换为 JSON 字符串并设置为请求体
