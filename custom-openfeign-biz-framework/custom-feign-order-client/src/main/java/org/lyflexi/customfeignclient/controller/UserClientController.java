@@ -2,6 +2,7 @@ package org.lyflexi.customfeignclient.controller;
 
 
 import org.lyflexi.customcloudfeignapi.entity.User;
+import org.lyflexi.customcloudfeignapi.holder.SystemTaskerContextHolder;
 import org.lyflexi.customcloudfeignapi.result.Result;
 import org.lyflexi.customcloudfeignapi.entity.UserParam;
 import org.lyflexi.customfeignclient.feign.client.UserClient;
@@ -25,6 +26,8 @@ public class UserClientController {
     @GetMapping(value = "/consumer/feign/user/get/{id}")
     public Result<User> getUserById(@PathVariable("id") Long id)
     {
+        //支持异步时候系统上下文设置
+        SystemTaskerContextHolder.getInstance().mount();
         User user = userClient.getUserById(id);
         return new Result<>(user);
     }
@@ -32,6 +35,8 @@ public class UserClientController {
     @PostMapping(value = "/consumer/feign/user/search")
     public Result<List<User>> search(@RequestBody UserParam param)
     {
+        //支持异步时候系统上下文设置
+        SystemTaskerContextHolder.getInstance().mount();
         List<User> users = userClient.search(param);
         return new Result<>(users);
     }
