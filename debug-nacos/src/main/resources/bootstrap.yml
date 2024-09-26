@@ -16,19 +16,21 @@ spring:
     pathmatch:
       matching-strategy: ant_path_matcher
   application:
-    name: debug_nacos
+    name: debug-nacos
   #-----------------------------------------------------------------
   ##                  Spring-cloug nacos配置                       --
   #-----------------------------------------------------------------
   cloud:
     nacos:
       username: ${NACOS_USERNAME:nacos}
-      password: ${NACOS_PASSWORD:Changles_!@#$}
+      password: ${NACOS_PASSWORD:nacos}
       discovery:
-        server-addr: ${REGISTER_HOST:10.28.20.10}:${REGISTER_PORT:32032}
-        namespace: ${NACOS_NAMESPACE:4fa94e78-d9c0-460b-920b-17acaabc00d9}
+        server-addr: ${REGISTER_HOST:192.168.18.100}:${REGISTER_PORT:8848}
+        namespace: ${NACOS_NAMESPACE:ff0ede0a-98f0-4adb-ae01-ffb8acb9422e}
       config:
-        server-addr: ${REGISTER_HOST:10.28.20.10}:${REGISTER_PORT:32032}
-        namespace: ${NACOS_NAMESPACE:4fa94e78-d9c0-460b-920b-17acaabc00d9}
+        server-addr: ${REGISTER_HOST:192.168.18.100}:${REGISTER_PORT:8848}
+        namespace: ${NACOS_NAMESPACE:ff0ede0a-98f0-4adb-ae01-ffb8acb9422e}
         file-extension: yaml
+        prefix: ${spring.application.name}
+
 

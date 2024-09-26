@@ -1,6 +1,7 @@
 package org.lyflexi.debug_nacos.config;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.env.EnvironmentPostProcessor;
 import org.springframework.core.env.ConfigurableEnvironment;
@@ -24,7 +25,7 @@ public class CustomEnvironmentPostProcessor implements EnvironmentPostProcessor 
 
     public static final String NACOS_DISCOVERY_NAMESPACE_KEY = "spring.cloud.nacos.discovery.namespace";
     public static final String NACOS_CONFIG_NAMESPACE_KEY = "spring.cloud.nacos.config.namespace";
-    public static final String NACOS_NAMESPACE_VALUE_TEST = "4fa94e78-d9c0-460b-920b-17acaabc00d9";
+    public static final String NACOS_NAMESPACE_VALUE_TEST = "ff0ede0a-98f0-4adb-ae01-ffb8acb9422e";
 
     public static final String APPLICATION_NAME_KEY = "spring.application.name";
     public static final String APPLICATION_NAME_VALUE = "debug-nacos";
@@ -32,7 +33,7 @@ public class CustomEnvironmentPostProcessor implements EnvironmentPostProcessor 
 
     @Override
     public void postProcessEnvironment(ConfigurableEnvironment environment, SpringApplication application) {
-
+        getAllProperties(environment);
         if (isWindows()){
             HashMap<String, Object> map = new HashMap<String, Object>();
             String ipSuffix = extractIpAddress();
@@ -43,6 +44,7 @@ public class CustomEnvironmentPostProcessor implements EnvironmentPostProcessor 
             }
             environment.getPropertySources().addLast(new MyPropertySource(map));
         }
+
     }
     private boolean isWindows() {
         String osName = System.getProperty("os.name").toLowerCase();

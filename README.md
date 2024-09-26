@@ -46,3 +46,11 @@ Process finished with exit code 1
 - HandlerInterceptor：Common在mvc拦截器中解析feign的请求头或者请求体，并根据请求头重新设置上下文信息：如用户信息，租户信息
 - 最后第二次调用远程服务B的其他接口的时候是异步调用，此时异步远程调用服务B才能成功
 ![img.png](custom-openfeign-biz-framework/pic/img.png)
+
+# module: debug_nacos
+
+2022版配置中心生效
+
+2022版服务中心生效
+
+以及如何提前干预nacos服务的注册行为
