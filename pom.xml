@@ -17,6 +17,7 @@
         <module>debug_sentinel</module>
         <module>debug_openfeign</module>
         <module>custom-openfeign-biz-framework</module>
+        <module>debug-nacos</module>
     </modules>
     <packaging>pom</packaging>
     <properties>

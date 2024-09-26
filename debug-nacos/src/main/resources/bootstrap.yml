@@ -1,0 +1,34 @@
+####################################################################
+##                          主进程 通用配置                         ##
+####################################################################
+server:
+  port: ${SERVER_PORT:8080}
+####################################################################
+##                          Spring 通用配置                        ##
+####################################################################
+spring:
+  main:
+    # 允许存在多个Feign调用相同Service的接口
+    allow-bean-definition-overriding: true
+    # 允许循环依赖
+    allow-circular-references: false
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  application:
+    name: debug_nacos
+  #-----------------------------------------------------------------
+  ##                  Spring-cloug nacos配置                       --
+  #-----------------------------------------------------------------
+  cloud:
+    nacos:
+      username: ${NACOS_USERNAME:nacos}
+      password: ${NACOS_PASSWORD:Changles_!@#$}
+      discovery:
+        server-addr: ${REGISTER_HOST:10.28.20.10}:${REGISTER_PORT:32032}
+        namespace: ${NACOS_NAMESPACE:4fa94e78-d9c0-460b-920b-17acaabc00d9}
+      config:
+        server-addr: ${REGISTER_HOST:10.28.20.10}:${REGISTER_PORT:32032}
+        namespace: ${NACOS_NAMESPACE:4fa94e78-d9c0-460b-920b-17acaabc00d9}
+        file-extension: yaml
+

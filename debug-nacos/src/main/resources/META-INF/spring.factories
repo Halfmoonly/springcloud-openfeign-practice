@@ -1,0 +1,1 @@
+org.springframework.boot.env.EnvironmentPostProcessor=org.lyflexi.debug_nacos.config.CustomEnvironmentPostProcessor
