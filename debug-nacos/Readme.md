@@ -93,8 +93,8 @@ spring:
 在nacos上创建新的命名空间，如temp，本地启动后端的时候，修改配置文件中的命名空间id为temp空间的id，将本地启动的后端服务注册到temp空间
 
 但是我们还需要在temp中部署新的gateway服务和租户权限管理服务M，缺点如下：
-- 后端需要手动改配置文件中的命名空间id，增加了修改量
-- 前端需要修改gateway-ip:port，增加了修改量
+- 后端需要手动改配置文件中的命名空间id，增加了修改量,还要记得不要提交，谁手滑提交了就要请喝茶
+- 前端需要修改gateway-ip:port，增加了修改量,还要记得不要提交，谁手滑提交了就要请喝茶
 - 最无法避免的情况是，由于测试环境资源吃紧，运维不允许部署多份gateway服务和租户权限管理服务M
 
 ## 方式2：基于EnvironmentPostProcessor
@@ -114,7 +114,7 @@ local-AService-本地ip后缀，之所以加本地ip后缀，是为了在协作�
 ## 注册中心
 - nacos的配置信息一般写在bootstrap.yml中，要开启bootstrap.yml我们需要引入spring-cloud-starter-bootstrap依赖
 - 实现EnvironmentPostProcessor接口，重写postProcessEnvironment方法，在springboot启动的开始阶段捕捉配置文件信息，修改spring.application,name服务名称，这也就修改了nacos注册的服务名称（我们只在本地Windows环境下修改服务的注册行为，注意实现的时候避免在线上Linux环境下生效）
-- SPI机制，我们需要在src/main/resources/META-INF/spring.factories中写入自定义的EnvironmentPostProcessor实现的路径（尽管springboot使用了src/main/resources/META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports，但这是写自动配置类AutoXXXConfiguration的，我们的EnvironmentPostProcessor并不属于自动配置类，因此还是要写在spring.factories，写在org.springframework.boot.autoconfigure.AutoConfiguration.imports中无效）
+- SPI机制，我们需要在src/main/resources/META-INF/spring.factories中写入自定义的EnvironmentPostProcessor实现的路径（尽管在最新版本的springboot3+中使用了src/main/resources/META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports，但这是写自动配置类AutoXXXConfiguration的，我们的EnvironmentPostProcessor并不属于自动配置类，因此还是要写在spring.factories，写在org.springframework.boot.autoconfigure.AutoConfiguration.imports中无效）
 
 ## 配置中心
 只有引入依赖spring-cloud-starter-alibaba-nacos-config，配置中心才会生效
@@ -130,4 +130,4 @@ local-AService-本地ip后缀，之所以加本地ip后缀，是为了在协作�
 
 同时我们在本地创建[application-local.yml](src%2Fmain%2Fresources%2Fapplication-local.yml)，本地的application-local.yml不需要以yaml结尾
 
-现在我们就可以激活指定的profile：local/test来切换不同环境的配置文件了，但是[bootstrap.yml](src%2Fmain%2Fresources%2Fbootstrap.yml)是所有环境公用的配置文件
+现在我们就可以激活指定的profile：local/test来切换不同环境的配置文件了，同时[bootstrap.yml](src%2Fmain%2Fresources%2Fbootstrap.yml)是所有环境公用的配置文件
