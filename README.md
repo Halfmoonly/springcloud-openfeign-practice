@@ -41,10 +41,11 @@ Process finished with exit code 1
 - 同步调用远程服务B：A服务普通请求执行结束，请求上下文被清除，但是清除之前传递给了远程服务B，之后等待B生产消息
 
 然后异步调用
-- A消费的时候，生产端B补传必要的请求头信息回来，如租户信息或者工厂信息
-- RequestInterceptor：A在feign拦截器中统一设置请求头或者请求体（POST）
-- HandlerInterceptor：Common在mvc拦截器中解析feign的请求头或者请求体，并根据请求头重新设置上下文信息：如用户信息，租户信息
-- 最后第二次调用远程服务B的其他接口的时候是异步调用，此时异步远程调用服务B才能成功
+- A消费的时候，生产端B补传必要的请求头信息回来，如租户信息或者工厂信息, 生产端如何补传？
+  - RequestInterceptor：A在feign拦截器中统一设置请求头或者请求体（POST）
+  - HandlerInterceptor：B在mvc拦截器中解析feign的请求头或者请求体，并根据请求头重新设置上下文信息：如用户信息，租户信息
+- 终于，生产端B能够补传必要的请求头信息给回客户端A
+- A后面的二次调用远程服务B的其他接口的时候是异步调用，此时异步远程调用服务B才能成功
 ![img.png](custom-openfeign-biz-framework/pic/img.png)
 
 # module: debug_nacos
