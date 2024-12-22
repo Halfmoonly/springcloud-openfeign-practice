@@ -47,11 +47,3 @@ Process finished with exit code 1
 - 终于，生产端B能够补传必要的请求头信息给回客户端A
 - A后面的二次调用远程服务B的其他接口的时候是异步调用，此时异步远程调用服务B才能成功
 ![img.png](custom-openfeign-biz-framework/pic/img.png)
-
-# module: debug_nacos
-
-2022版配置中心生效
-
-2022版服务中心生效
-
-以及如何提前干预nacos服务的注册行为

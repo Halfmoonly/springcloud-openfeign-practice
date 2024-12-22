@@ -4,20 +4,14 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.lyflexi</groupId>
-        <artifactId>springcloud-openfeign-practice</artifactId>
+        <artifactId>debug-openfeign</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <modules>
-        <module>custom-cloud-feign-api</module>
-        <module>custom-feign-order-client</module>
-        <module>custom-cloud-feign-server</module>
-    </modules>
-    <packaging>pom</packaging>
     <groupId>org.lyflexi</groupId>
-    <artifactId>custom-openfeign-biz-framework</artifactId>
+    <artifactId>cloud-feign-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>custom-openfeign-biz-framework</name>
-    <description>custom-openfeign-biz-framework</description>
+    <name>cloud-feign-server</name>
+    <description>cloud-feign-server</description>
     <url/>
     <licenses>
         <license/>
@@ -35,20 +29,16 @@
         <java.version>17</java.version>
     </properties>
     <dependencies>
+        <!--实体类-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <groupId>org.lyflexi</groupId>
+            <artifactId>cloud-feign-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
-
+        <!-- 注册中心 nacos -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>${fastjson.version}</version>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
     </dependencies>
 

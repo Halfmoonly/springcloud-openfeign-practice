@@ -8,16 +8,16 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modules>
-        <module>custom-cloud-feign-api</module>
-        <module>custom-feign-order-client</module>
-        <module>custom-cloud-feign-server</module>
+        <module>cloud-feign-server</module>
+        <module>feign-order-client</module>
+        <module>cloud-feign-api</module>
     </modules>
     <packaging>pom</packaging>
     <groupId>org.lyflexi</groupId>
-    <artifactId>custom-openfeign-biz-framework</artifactId>
+    <artifactId>debug-openfeign</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>custom-openfeign-biz-framework</name>
-    <description>custom-openfeign-biz-framework</description>
+    <name>debug-openfeign</name>
+    <description>debug-openfeign</description>
     <url/>
     <licenses>
         <license/>
@@ -44,11 +44,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>${fastjson.version}</version>
         </dependency>
     </dependencies>
 

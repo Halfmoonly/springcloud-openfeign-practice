@@ -9,15 +9,13 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>org.lyflexi</groupId>
-    <artifactId>spring-cloud-alibaba-practice</artifactId>
+    <artifactId>springcloud-openfeign-practice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-cloud-alibaba-practice</name>
-    <description>spring-cloud-alibaba-practice</description>
+    <name>springcloud-openfeign-practice</name>
+    <description>springcloud-openfeign-practice</description>
     <modules>
-        <module>debug_sentinel</module>
-        <module>debug_openfeign</module>
+        <module>debug-openfeign</module>
         <module>custom-openfeign-biz-framework</module>
-        <module>debug-nacos</module>
     </modules>
     <packaging>pom</packaging>
     <properties>
